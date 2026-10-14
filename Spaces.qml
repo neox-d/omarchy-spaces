@@ -796,7 +796,7 @@ Panel {
         Rectangle {
           anchors.fill: parent
           radius: root.pillRadius
-          color: pill.active ? root.activeFill()
+          color: pill.active && root.cfg.pillBackground ? root.activeFill()
             : root.cfg.pillBackground
               ? (pill.hovered ? Util.alpha(root.fg, 0.12)
                 : pill.occupied ? Util.alpha(root.fg, 0.06)
@@ -898,8 +898,7 @@ Panel {
                   Rectangle {
                     anchors.fill: parent
                     radius: Style.cornerRadius > 0 ? Style.space(5) : 0
-                    color: appIcon.highlightFocused || appIcon.hovered ? Util.alpha(pill.textColor, 0.18) : "transparent"
-                    Behavior on color { enabled: root.fastDur > 0; ColorAnimation { duration: root.fastDur } }
+                    color: "transparent"
                   }
 
                   Row {
